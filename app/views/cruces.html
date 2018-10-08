@@ -1,2 +1,23 @@
-dsadasdasdsa
-asdasdsa
+<ol class="breadcrumb">
+    <li><a ui-sref="main">Inicio</a></li>
+    <li>Cruces</li>    
+</ol>
+<h2>Lista de Cruces</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div>
+            <table class="table table-striped">
+                 <thead>
+                    <tr>
+                        <th ng-style="{'width': tipos_ws.wCodigo}" sortable-header col="id">#</th>
+                        <th ng-style="{'width': tipos_ws.wDescripcion}" sortable-header col="">Código Cruce</th>
+                        <th ng-style="{'width': tipos_ws.wNServicios}" sortable-header col="">Código Punto</th>
+                        <th ng-style="{'width': tipos_ws.wNRecibos}" sortable-header col="">Suministro</th>
+                        <th ng-style="{'width': tipos_ws.wNRecibosSinPagar}" sortable-header col="">Descripcion</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
