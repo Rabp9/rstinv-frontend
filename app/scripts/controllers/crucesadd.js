@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name rstinvFrontendApp.controller:CrucesCtrl
+ * @name rstinvFrontendApp.controller:CrucesaddCtrl
  * @description
- * # CrucesCtrl
+ * # CrucesaddCtrl
  * Controller of the rstinvFrontendApp
  */
 angular.module('rstinvFrontendApp')
-  .controller('CrucesCtrl', function () {
+  .controller('CrucesaddCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

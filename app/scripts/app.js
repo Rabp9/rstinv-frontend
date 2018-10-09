@@ -37,7 +37,17 @@ angular
         title: 'Cruces'
     };  
     
+    var crucesAddState = {
+        name: 'crucesAdd',
+        url: '/cruces/add',
+        templateUrl: 'views/crucesadd.html',
+        controller: 'CrucesAddCtrl',
+        controllerAs: 'crucesAdd',
+        title: 'Nuevo Cruce'
+    };  
+    
     $stateProvider.state(mainState);
     $stateProvider.state(crucesState);
+    $stateProvider.state(crucesAddState);
     $urlRouterProvider.when('', '/');
 });
