@@ -10,13 +10,24 @@
             <table class="table table-striped">
                  <thead>
                     <tr>
-                        <th ng-style="{'width': tipos_ws.wCodigo}" sortable-header col="id">#</th>
-                        <th ng-style="{'width': tipos_ws.wDescripcion}" sortable-header col="">Código Cruce</th>
-                        <th ng-style="{'width': tipos_ws.wNServicios}" sortable-header col="">Código Punto</th>
-                        <th ng-style="{'width': tipos_ws.wNRecibos}" sortable-header col="">Suministro</th>
-                        <th ng-style="{'width': tipos_ws.wNRecibosSinPagar}" sortable-header col="">Descripcion</th>
+                        <th ng-style="{'width': cruces_ws.wCodigo}" sortable-header col="id">#</th>
+                        <th ng-style="{'width': cruces_ws.wCodigoCruce}" sortable-header col="">Código Cruce</th>
+                        <th ng-style="{'width': cruces_ws.wCodigoPunto}" sortable-header col="">Código Punto</th>
+                        <th ng-style="{'width': cruces_ws.wSuministro}" sortable-header col="">Suministro</th>
+                        <th ng-style="{'width': cruces_ws.wDescripcion}" sortable-header col="">Descripcion</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr ng-show="loading"><td colspan="5">Cargando...</td>
+                    <tr ng-show="!loading && cruces.length == 0"><td colspan="5">No se encontraron cruces registrados</td>
+                    <tr ng-show="!loading && cruces.length > 0" ng-repeat="cruce in cruces">
+                        <td>{{ cruce.id }}</td>
+                        <td>{{ cruce.codigoCruce }}</td>
+                        <td>{{ cruce.codigoPunto }}</td>
+                        <td>{{ cruce.suministro }}</td>
+                        <td>{{ cruce.descripcion }}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
