@@ -3,26 +3,34 @@
     <li><a href="#/cruces">Cruces</a></li>
     <li>Agregar Cruce</li>    
 </ol>
+
+<div class="alert alert-dismissible" ng-class="{'alert-success': message.code === 200, 'alert-danger': message.code !== 200 }" role="alert" ng-show="message.code !== undefined">
+    <button type="button" class="close" ng-click="message.code = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ message.message }} 
+</div>
+
 <h2>Nuevo Cruce</h2>
-<form>
+<form novalidate angular-validator angular-validator-submit="saveCruce(cruce, 'btnSaveCruce')" name="CruceAdd"
     <div class="form-group">
         <label for="txtCodigoCruce">Codigo Cruce:</label>
-        <input id="txtCodigoCruce" class="form-control col-xs-5" type="text">
-        </div>
+        <input id="txtCodigoCruce" class="form-control" type="text" ng-model="cruce.codigoCruce"
+            name="contactoNombreCompleto" required required-message="'Este campo es requerido'" validate-on="blur"
+            ng-pattern="'[0-9]+'" maxlength="4"
+            invalid-message="'Sólo se puede ingresar números'"/>
+    </div>
     <div class="form-group">
         <label for="txtCodigoPunto">Codigo Punto:</label>
-        <input id="txtCodigoPunto" class="form-control" type="text">
+        <input id="txtCodigoPunto" class="form-control" type="text" ng-model="cruce.codigoPunto" />
     </div>
     <div class="form-group">
         <label for="txtSuministro">Suministro:</label>
-        <input id="txtSuministro" class="form-control" type="text">
+        <input id="txtSuministro" class="form-control" type="text" ng-model="cruce.suministro" />
     </div>
     <div class="form-group">
         <label for="txtDescripcion">Descripcion:</label>
-        <input id="txtDescripcion" class="form-control" type="text">
+        <input id="txtDescripcion" class="form-control" type="text" ng-model="cruce.descripcion" />
     </div>
-<br>
-<button type="button" class="btn btn-sm btn-default" disabled="disabled"><span class="glyphicon glyphicon-save"></span>Guardar</button>
-<a href="#/cruces" <button type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-remove"></span> Cancelar</button></a>
-
+    <br>
+    <button id="btnSaveCruce" type="submit" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-save"></span> <span class="btn-text">Guardar</span></button>
+    <a href="#/cruces" <button type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-remove"></span> Cancelar</button></a>
 </form>

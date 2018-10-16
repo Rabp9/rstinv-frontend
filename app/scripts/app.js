@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'angularValidator'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
     // $httpProvider.interceptors.push('oauthHttpInterceptor');
