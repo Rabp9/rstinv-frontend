@@ -14,21 +14,29 @@
     <div class="form-group">
         <label for="txtCodigoCruce">Codigo Cruce:</label>
         <input id="txtCodigoCruce" class="form-control" type="text" ng-model="cruce.codigoCruce"
-            name="contactoNombreCompleto" required required-message="'Este campo es requerido'" validate-on="blur"
+            name="cruceCodigoCruce" required required-message="'Este campo es requerido'" validate-on="blur"
             ng-pattern="'[0-9]+'" maxlength="4"
             invalid-message="'Sólo se puede ingresar números'"/>
     </div>
     <div class="form-group">
         <label for="txtCodigoPunto">Codigo Punto:</label>
-        <input id="txtCodigoPunto" class="form-control" type="text" ng-model="cruce.codigoPunto" />
+        <input id="txtCodigoPunto" class="form-control" type="text" ng-model="cruce.codigoPunto" 
+            name="cruceCodigoPunto" required required-message="'Este campo es requerido'" validate-on="blur"
+            ng-pattern="'[0-9]+'" maxlength="2"
+            invalid-message="'Sólo se puede ingresar números'"/>
     </div>
     <div class="form-group">
         <label for="txtSuministro">Suministro:</label>
-        <input id="txtSuministro" class="form-control" type="text" ng-model="cruce.suministro" />
+        <input id="txtSuministro" class="form-control" type="text" ng-model="cruce.suministro"
+            name="cruceSuministro" required required-message="'Este campo es requerido'" validate-on="blur"
+            ng-pattern="'[0-9]+'" maxlength="8"
+            invalid-message="'Sólo se puede ingresar números'"/>
     </div>
     <div class="form-group">
         <label for="txtDescripcion">Descripcion:</label>
-        <input id="txtDescripcion" class="form-control" type="text" ng-model="cruce.descripcion" />
+        <input id="txtDescripcion" class="form-control" type="text" ng-model="cruce.descripcion"
+            name="contactoNombreCompleto" required required-message="'Este campo es requerido'" validate-on="blur"
+        
     </div>
     <br>
     <button id="btnSaveCruce" type="submit" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-save"></span> <span class="btn-text">Guardar</span></button>

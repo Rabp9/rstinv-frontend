@@ -31,6 +31,11 @@
                         <td>{{ cruce.codigoPunto }}</td>
                         <td>{{ cruce.suministro }}</td>
                         <td>{{ cruce.descripcion }}</td>
+                        <td>
+                           <button type="button" class="btn btn-primary btn-sm" ng-click="showCrucesEdit(cruce)" title="Modificar"><span class="glyphicon glyphicon-pencil"></span></button>
+                           <button ng-show="cruce.estado_id === 1" type="button" class="btn btn-danger btn-sm" ng-click="showCrucesDelete(cruce)" title="Deshabilitar"><span class="glyphicon glyphicon-remove"></span></button>
+                           <button ng-show="cruce.estado_id === 2" type="button" class="btn btn-default btn-sm" ng-click="showCrucesActivate(cruce)" title="Activar"><span class="glyphicon glyphicon-ok"></span></button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

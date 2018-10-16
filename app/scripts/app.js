@@ -16,6 +16,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
+    'ui.bootstrap',
     'angularValidator'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
@@ -45,10 +46,19 @@ angular
         controller: 'CrucesAddCtrl',
         controllerAs: 'crucesAdd',
         title: 'Nuevo Cruce'
+    };
+    var crucesEditState = {
+        name: 'crucesEdit',
+        url: '/cruces/edit',
+        templateUrl: 'views/crucesedit.html',
+        controller: 'CrucesEditCtrl',
+        controllerAs: 'crucesEdit',
+        title: 'Editar Cruce'
     };  
     
     $stateProvider.state(mainState);
     $stateProvider.state(crucesState);
     $stateProvider.state(crucesAddState);
+    $stateProvider.state(crucesEditState);
     $urlRouterProvider.when('', '/');
 });

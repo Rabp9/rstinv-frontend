@@ -12,7 +12,7 @@ angular.module('rstinvFrontendApp').factory('envService', function () {
         getHost: function() {
             switch (window.location.hostname) {
                 case 'localhost':
-                    return 'http://localhost:8000/rstinv-backend/';
+                    return 'http://localhost/rstinv-backend/';
             }
         }
     };
