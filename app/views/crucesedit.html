@@ -1,30 +1,41 @@
-<form novalidate angular-validator angular-validator-submit="saveServicio(servicio, 'btnSaveServicio')" name="ServicioEdit" angular-validator-quiet>
-    <div class="modal-header">
-        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modificar Servicio</h4>
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Modificar Cruce</h4>
+</div>
+<div class="alert alert-dismissible" ng-class="{'alert-success': message.code === 200, 'alert-danger': message.code !== 200 }" role="alert" ng-show="message.code !== undefined">    <button type="button" class="close" ng-click="message.code = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ message.message }} 
+</div>
+<form novalidate angular-validator angular-validator-submit="saveCruce(cruce, 'btnSaveCruce')" name="CruceEdit" angular-validator-quiet>
+    <div class="form-group">
+        <label for="txtCodigoCruce">Codigo Cruce:</label>
+        <input id="txtCodigoCruce" class="form-control" type="text" ng-model="cruce.codigoCruce"
+            name="cruceCodigoCruce" required required-message="'Este campo es requerido'" validate-on="blur"
+            ng-pattern="'[0-9]+'" maxlength="4"
+            invalid-message="'Sólo se puede ingresar números'"/>
     </div>
-    <div class="modal-body">
-        <div class="form-group">
-            <label for="txtDescripcion">Descripción</label>
-            <input id="txtDescripcion" class="form-control" type="text" ng-model="servicio.descripcion"
-                name="servicioDescripcion" required required-message="'Este campo es requerido'" validate-on="blur" />
-        </div>
-        <div class="form-group">
-            <label for="sltTipo">Tipo de Servicio</label>
-            <select id="sltTipo" class="form-control"
-                ng-options="tipo.id as tipo.descripcion for tipo in tipos"
-                ng-model="servicio.tipo_id" name="servicioTipo">
-                <option value="">Selecciona un Tipo de Servicio</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="txtDetalle">Detalle</label>
-            <input id="txtDetalle" class="form-control" type="text" ng-model="servicio.detalle"
-                name="servicioDetalle" required required-message="'Este campo es requerido'" validate-on="blur" />
-        </div>
+    <div class="form-group">
+        <label for="txtCodigoPunto">Codigo Punto:</label>
+        <input id="txtCodigoPunto" class="form-control" type="text" ng-model="cruce.codigoPunto" 
+            name="cruceCodigoPunto" required required-message="'Este campo es requerido'" validate-on="blur"
+            ng-pattern="'[0-9]+'" maxlength="3"
+            invalid-message="'Sólo se puede ingresar números'"/>
     </div>
+    <div class="form-group">
+        <label for="txtSuministro">Suministro:</label>
+        <input id="txtSuministro" class="form-control" type="text" ng-model="cruce.suministro"
+            name="cruceSuministro" required required-message="'Este campo es requerido'" validate-on="blur"
+            ng-pattern="'[0-9]+'" maxlength="8"
+            invalid-message="'Sólo se puede ingresar números'"/>
+    </div>
+    <div class="form-group">
+        <label for="txtDescripcion">Descripcion:</label>
+        <input id="txtDescripcion" class="form-control" type="text" ng-model="cruce.descripcion"
+            name="contactoNombreCompleto" required required-message="'Este campo es requerido'" validate-on="blur" />
+        
+    </div>
+    <br>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" ng-click="cancel()">Cerrar</button>
-        <button id="btnSaveServicio" class="btn btn-success" type="submit">Guardar Servicio</button>
+    <button id="btnSaveCruce" type="submit" class="btn btn-sm btn-successt"><span class="glyphicon glyphicon-save"></span> <span class="btn-text">Modificar</span></button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cerrar</button>
     </div>
 </form>

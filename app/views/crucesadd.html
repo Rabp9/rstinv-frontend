@@ -10,7 +10,7 @@
 </div>
 
 <h2>Nuevo Cruce</h2>
-<form novalidate angular-validator angular-validator-submit="saveCruce(cruce, 'btnSaveCruce')" name="CruceAdd"
+<form novalidate angular-validator angular-validator-submit="saveCruce(cruce, 'btnSaveCruce')" name="CruceAdd" >
     <div class="form-group">
         <label for="txtCodigoCruce">Codigo Cruce:</label>
         <input id="txtCodigoCruce" class="form-control" type="text" ng-model="cruce.codigoCruce"
@@ -35,10 +35,12 @@
     <div class="form-group">
         <label for="txtDescripcion">Descripcion:</label>
         <input id="txtDescripcion" class="form-control" type="text" ng-model="cruce.descripcion"
-            name="contactoNombreCompleto" required required-message="'Este campo es requerido'" validate-on="blur"
+            name="contactoNombreCompleto" required required-message="'Este campo es requerido'" validate-on="blur" />
         
     </div>
     <br>
+    <div class="modal-footer">
     <button id="btnSaveCruce" type="submit" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-save"></span> <span class="btn-text">Guardar</span></button>
     <a href="#/cruces" <button type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-remove"></span> Cancelar</button></a>
+    </div>
 </form>

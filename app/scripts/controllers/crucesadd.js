@@ -7,7 +7,8 @@
  * # CrucesaddCtrl
  * Controller of the rstinvFrontendApp
  */
-angular.module('rstinvFrontendApp').controller('CrucesAddCtrl', function ($scope, crucesService, $utilsViewService,
+angular.module('rstinvFrontendApp')
+        .controller('CrucesAddCtrl', function ($scope, crucesService, $utilsViewService,
     $state, $rootScope) {
     $scope.cruce = {};
     

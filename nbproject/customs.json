@@ -2,5 +2,9 @@
     "elements": {
         "ui-view": {}
     },
-    "attributes": {}
+    "attributes": {
+        "angular-validator": {
+            "context": "form"
+        }
+    }
 }

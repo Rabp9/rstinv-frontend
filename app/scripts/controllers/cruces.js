@@ -25,26 +25,14 @@ angular.module('rstinvFrontendApp')
             $scope.loading = false;
         });
     };
-       /* $scope.showCrucesAdd = function() {
-        var modalInstanceAdd = $uibModal.open({
-            templateUrl: 'views/crucesadd.html',
-            controller: 'CrucesAddCtrl',
-            backdrop: false
-        });
-
-        modalInstanceAdd.result.then(function (data) {
-            $scope.message = data;
-            $scope.getCruces();
-        });
-    }; */
-    
-    $scope.showCrucesEdit = function(cruce) {
+        $scope.showCrucesEdit = function(cruce) {
         var modalInstanceEdit = $uibModal.open({
-            templateUrl: 'views/crucesedit.html',
-            controller: 'CrucesEditCtrl',
-            backdrop: false,
-            resolve: {
-                id: function() {
+        templateUrl: 'views/crucesedit.html',
+        controller: 'CruceseditCtrl',
+        backdrop: false,
+        size: 'lg',
+        resolve: {
+                cruce_id: function() {
                     return cruce.id;
                 } 
             }
@@ -55,30 +43,6 @@ angular.module('rstinvFrontendApp')
             $scope.init();
         });
     };
-    
-    $scope.showCrucesDelete = function(cruce) {
-        if (confirm('¿Está seguro de deshabilitar el servicio?')) {
-            cruce.estado_id = 2;
-            crucesService.save(cruce, function(data) {
-                $scope.message = data;
-                $scope.getServicios();
-            }, function(error) {
-                cruce.estado_id = 1;
-            });
-        }
-    };
-    
-    $scope.showCrucesActivate = function(cruce) {
-        if (confirm('¿Está seguro de activar el servicio?')) {
-            servicio.estado_id = 1;
-            crucesService.save(servicio, function(data) {
-                $scope.message = data;
-                $scope.getCruces();
-            }, function(error) {
-                cruce.estado_id = 2;
-            });
-        }
-    };
-    
+
     $scope.init();
 });
