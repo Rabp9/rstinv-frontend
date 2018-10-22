@@ -9,13 +9,31 @@
  */
 angular.module('rstinvFrontendApp')
 .controller('CrucesCtrl', function ($scope, $uibModal, crucesService) {
+        $scope.search = {};
+    $scope.search.estado_id = '1';
+    $scope.page = 1;
+    $scope.items_per_page = 10;
+
     $scope.cruces_ws = {
        wCodigo: '3%',
        wCodigoCruce: '8%',
        wCodigoPunto: '8%',
        wSuministro: '15%',
-       wDescripcion: '66%'
+       wDescripcion: '60%'
    };
+       $scope.getCruces = function() {
+        $scope.loading = true;
+        crucesService.get({
+            page: $scope.page,
+            cruce_id: $scope.search.cruce_id,
+            items_per_page: $scope.items_per_page
+        }, function(data) {
+            $scope.cruces = data.cruces;
+            $scope.pagination = data.pagination;
+            $scope.count = data.count;
+            $scope.loading = false;
+        });
+};
    
     $scope.init = function() {
         $scope.loading = true;
@@ -43,6 +61,18 @@ angular.module('rstinvFrontendApp')
             $scope.init();
         });
     };
+        $scope.showCruceDelete = function(cruce) {
+        if (confirm('¿Está seguro de eliminar este cruce?')) {
+             cruce.cruce_id = 1;
+            crucesService.save(cruce, function(data) {
+                $scope.message = data;
+                $scope.getCruces();
+            }, function(error) {
+                cruce.cruce_id = 2;
+});
+        
+        }
+    };
 
     $scope.init();
-});
+    });

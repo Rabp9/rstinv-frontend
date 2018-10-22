@@ -23,8 +23,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-show="loading"><td colspan="6">Cargando...</td>
-                    <tr ng-show="!loading && cruces.length == 0"><td colspan="6">No se encontraron cruces registrados</td>
+                    <tr ng-show="loading"><td colspan="7">Cargando...</td>
+                    <tr ng-show="!loading && cruces.length == 0"><td colspan="7">No se encontraron cruces registrados</td>
                     <tr ng-show="!loading && cruces.length > 0" ng-repeat="cruce in cruces" row-id="{{ cruce.id }}">
                         <td>{{ cruce.id }}</td>
                         <td>{{ cruce.codigoCruce }}</td>
@@ -32,8 +32,9 @@
                         <td>{{ cruce.suministro }}</td>
                         <td>{{ cruce.descripcion }}</td>
                         <td>
-                           <button type="button" class="btn btn-primary btn-sm" ng-click="showCrucesEdit(cruce)" title="Modificar"><span class="glyphicon glyphicon-pencil"></span></button>
-                          
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="showCrucesEdit(cruce)" title="Modificar"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                        <td>
+                          <button type="button" class="btn btn-danger btn-sm" ng-click="showCruceDelete(cruce)" title="Eliminar"><span class="glyphicon glyphicon-remove"></span></button>
                         </td>
                     </tr>
                 </tbody>
