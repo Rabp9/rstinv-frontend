@@ -8,6 +8,30 @@
 </div>
 
 <h2>Lista de Cruces <a href="#/cruces/add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo Cruce</a></h2>
+<br>
+<div>
+    <div class="radio pull-left">
+        <label>
+            <input type="radio" ng-model="search.estado_id" value=""> 
+            Todos
+        </label>
+        <label>
+            <input type="radio" ng-model="search.estado_id" value="1"> 
+            Activos
+        </label>
+        <label>
+            <input type="radio" ng-model="search.estado_id" value="2"> 
+            Inactivos
+        </label>
+    </div>
+    <div class="pull-right">
+        Mostrando 
+        <select class="form-control" style="width: 70px; display: inline;" ng-change="onChangeItemsPerPage()"
+            ng-model="items_per_page" ng-options="option for option in [10, 50, 100, 150]">
+        </select> 
+        resultados por página
+    </div>
+</div>
 
 <div class="row">
     <div class="col-sm-12">
@@ -39,6 +63,11 @@
                     </tr>
                 </tbody>
             </table>
+            <ul uib-pagination total-items="pagination_servicios.totalItems" first-text="Primero" 
+                last-text="Último" next-text="Siguiente" previous-text="Anterior"
+                items-per-page="pagination_servicios.itemsPerPage" ng-model="page_servicios" 
+                class="pagination-sm" boundary-links="true" force-ellipses="true"
+                ng-change="pageServiciosChanged()"></ul>
         </div>
     </div>
 </div>
