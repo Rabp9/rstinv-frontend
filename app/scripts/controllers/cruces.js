@@ -26,7 +26,7 @@ angular.module('rstinvFrontendApp')
         $scope.loading = true;
         crucesService.get({
             page: $scope.page,
-            cruce_id: $scope.search.cruce_id,
+            estado_id: $scope.search.estado_id,
             items_per_page: $scope.items_per_page
         }, function(data) {
             $scope.cruces = data.cruces;
@@ -45,12 +45,42 @@ angular.module('rstinvFrontendApp')
         });
     };
     
+    $scope.$watch('search.estado_id', function(oldValue, newValue) {
+        $scope.page = 1;
+        $scope.getCruces();
+    });
+    
+    $scope.$watch('search.text', function(oldValue, newValue) {
+        $scope.page = 1;
+        $scope.getCruces();
+    });
+    
+    $scope.pageChanged = function() {
+        $scope.getCruces();
+    };
+    
+    $scope.onChangeTipo = function() {
+        $scope.getCruces();
+    };
+    
+    $scope.showCrucesAdd = function() {
+        var modalInstanceAdd = $uibModal.open({
+            templateUrl: 'views/crucesadd.html',
+            controller: 'CrucesAddCtrl',
+            backdrop: false
+        });
+
+        modalInstanceAdd.result.then(function (data) {
+            $scope.message = data;
+            $scope.getCruces();
+        });
+    };
+    
     $scope.showCrucesEdit = function(cruce) {
         var modalInstanceEdit = $uibModal.open({
         templateUrl: 'views/crucesedit.html',
         controller: 'CruceseditCtrl',
         backdrop: false,
-        size: 'lg',
         resolve: {
                 cruce_id: function() {
                     return cruce.id;
@@ -64,9 +94,21 @@ angular.module('rstinvFrontendApp')
         });
     };
        
-    $scope.showCruceDelete = function(cruce) {
+    $scope.showCrucesDelete = function(cruce) {
         if (confirm('¿Está seguro de eliminar este cruce?')) {
             cruce.estado_id = 2;
+            crucesService.save(cruce, function(data) {
+                $scope.message = data;
+                $scope.getCruces();
+            }, function(error) {
+                cruce.estado_id = 1;
+            });
+        }
+    };
+    
+    $scope.showCucesActivate = function(cruce) {
+        if (confirm('¿Está seguro de activar el servicio?')) {
+            cruce.estado_id = 1;
             crucesService.save(cruce, function(data) {
                 $scope.message = data;
                 $scope.getCruces();
@@ -75,6 +117,11 @@ angular.module('rstinvFrontendApp')
             });
         }
     };
+    
+    $scope.onChangeItemsPerPage = function() {
+        $scope.page = 1;
+        $scope.getCruces();
+};
 
     $scope.init();
 });

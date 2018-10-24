@@ -1,10 +1,14 @@
 {
     "elements": {
-        "ui-view": {}
+        "ui-view": {},
+        "scrollable-table": {}
     },
     "attributes": {
         "angular-validator": {
             "context": "form"
+        },
+        "ui-sref": {
+            "context": "a"
         }
     }
 }

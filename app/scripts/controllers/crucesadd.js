@@ -9,8 +9,21 @@
  */
 angular.module('rstinvFrontendApp')
         .controller('CrucesAddCtrl', function ($scope, crucesService, $utilsViewService,
-    $state, $rootScope) {
+    $state, $rootScope, $uibModalInstance) {
     $scope.cruce = {};
+    
+    $scope.init = function() {
+        $scope.loading = true;
+        crucesService.get(function(data) {
+            $scope.cruces = data.tipos;
+            $scope.loading = false;
+            $('#txtCodigoCruce').focus();
+        });
+    };
+    
+    $scope.cancel = function() {
+        $uibModalInstance.dismiss('cancel');
+    };
     
     $scope.saveCruce = function(cruce, boton) {
         $('#' + boton + ' .btn-text').text('Guardando...');
@@ -27,6 +40,7 @@ angular.module('rstinvFrontendApp')
                 $('#' + boton + ' .btn-text').text('Guardar');
                 $state.go('crucesadd');
             }
+            $uibModalInstance.close(data);
         }, function(err) {
             $utilsViewService.enable('#' + boton);
             $('#' + boton + ' .btn-text').text('Guardar');
@@ -34,4 +48,5 @@ angular.module('rstinvFrontendApp')
             $state.go('crucesAdd');
         });
     };
+    $scope.init();
 });

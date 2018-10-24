@@ -9,5 +9,14 @@
  */
 angular.module('rstinvFrontendApp')
 .factory('crucesService', function($resource, envService) {
-    return $resource(envService.getHost() + 'cruces/:id.json');
+    return $resource(envService.getHost() + 'cruces/:id.json',{}, {
+        search: {
+            method: 'GET',
+            url: envService.getHost() + 'cruces/search/:texto.json'
+        },
+        searchMany: {
+            method: 'GET',
+            url: envService.getHost() + 'cruces/searchMany/:search.json'
+        }
+    });
 });
