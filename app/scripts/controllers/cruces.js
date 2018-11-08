@@ -8,7 +8,8 @@
  * Controller of the rstinvFrontendApp
  */
 angular.module('rstinvFrontendApp')
-.controller('CrucesCtrl', function ($scope, $uibModal, crucesService) {
+.controller('CrucesCtrl',function ($scope, $uibModal, crucesService) {
+
     $scope.search = {};
     $scope.search.estado_id = '1';
     $scope.page = 1;
@@ -27,6 +28,7 @@ angular.module('rstinvFrontendApp')
         crucesService.get({
             page: $scope.page,
             estado_id: $scope.search.estado_id,
+            text: $scope.search.text,
             items_per_page: $scope.items_per_page
         }, function(data) {
             $scope.cruces = data.cruces;
@@ -59,7 +61,7 @@ angular.module('rstinvFrontendApp')
         $scope.getCruces();
     };
     
-    $scope.onChangeTipo = function() {
+    $scope.onChangeCruce = function() {
         $scope.getCruces();
     };
     

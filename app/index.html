@@ -42,26 +42,34 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mantenedores <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li ui-sref-active="active"><a ui-sref="cruces">Cruces</a></li>
-                                <li ui-sref-active="active"><a ui-sref="servicios">Servicios</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Componentes <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li ui-sref-active="active"><a ui-sref="">Reguladores</a></li>
+                                <li ui-sref-active="active"><a ui-sref="">Antenas</a></li>
+                                <li ui-sref-active="active"><a ui-sref="">CPU's</a></li>
+                                <li ui-sref-active="active"><a ui-sref="">Fuentes</a></li>
+                                <li ui-sref-active="active"><a ui-sref="">POE's</a></li>
+                                <li ui-sref-active="active"><a ui-sref="">Postes</a></li>
+                                <li ui-sref-active="active"><a ui-sref="">Semaforos</a></li>
+                                <li ui-sref-active="active"><a ui-sref="">Switches</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
     <div class="container">
         <ui-view></ui-view>
     </div>
-
-    <div class="footer">
-        <div class="container">
-            <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-        </div>
-    </div>
-
+    
+  
     <!-- build:js(.) scripts/vendor.js -->
+    
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>

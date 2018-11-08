@@ -1,6 +1,7 @@
 {
     "elements": {
         "ui-view": {},
+        "hbody": {},
         "scrollable-table": {}
     },
     "attributes": {

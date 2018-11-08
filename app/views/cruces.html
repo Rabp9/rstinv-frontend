@@ -6,9 +6,9 @@
     <button type="button" class="close" ng-click="message.code = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     {{ message.message }} 
 </div>
-
+ 
 <h2>Lista de Cruces   <button type="button" class="btn btn-primary btn-sm" ng-click="showCrucesAdd(cruce)" title="Agregar">Nuevo  <span class="glyphicon glyphicon-plus"></span></button></h2>
-    <div class="radio pull-left">
+<div class="radio pull-left">
         <label>
             <input type="radio" ng-model="search.estado_id" value=""> 
             Todos
@@ -21,7 +21,7 @@
             <input type="radio" ng-model="search.estado_id" value="2"> 
             Inactivos
         </label>
-    </div>
+    </div>  
     <div class="pull-right">
         Mostrando 
         <select class="form-control" style="width: 70px; display: inline;" ng-change="onChangeItemsPerPage()"
