@@ -45,9 +45,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-show="loading"><td colspan="7">Cargando...</td>
-                    <tr ng-show="!loading && cruces.length === 0"><td colspan="7">No se encontraron cruces registrados</td>
-                    <tr ng-show="!loading && cruces.length > 0" ng-repeat="cruce in cruces" row-id="{{ cruce.id }}">
+                    <tr ng-show="loading"><td colspan="8">Cargando...</td>
+                    <tr ng-show="!loading && cruces.length === 0"><td colspan="8">No se encontraron cruces registrados</td>
+                    <tr ng-show="!loading && cruces.length > 0" ng-class="{'danger': cruce.estado_id === 2}" ng-repeat="cruce in cruces" row-id="{{ cruce.id }}">
                         <td>{{ cruce.id }}</td>
                         <td>{{ cruce.codigoCruce }}</td>
                         <td>{{ cruce.codigoPunto }}</td>
@@ -58,7 +58,10 @@
                         </td>
                         <td>
                             <button ng-show="cruce.estado_id === 1" type="button" class="btn btn-danger btn-sm" ng-click="showCrucesDelete(cruce)" title="Deshabilitar"><span class="glyphicon glyphicon-remove"></span></button>
-                            <button ng-show="cruce.estado_id === 2" type="button" class="btn btn-default btn-sm" ng-click="showCucesActivate(cruce)" title="Activar"><span class="glyphicon glyphicon-ok"></span></button>    
+                            <button ng-show="cruce.estado_id === 2" type="button" class="btn btn-default btn-sm" ng-click="showCrucesActivate(cruce)" title="Activar"><span class="glyphicon glyphicon-ok"></span></button>    
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="showDetalle(cruce)" title="Detalles"><span class="glyphicon glyphicon-info-sign"></span></button>
                         </td>
                     </tr>
                 </tbody>

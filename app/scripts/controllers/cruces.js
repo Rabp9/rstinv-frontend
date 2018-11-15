@@ -8,7 +8,7 @@
  * Controller of the rstinvFrontendApp
  */
 angular.module('rstinvFrontendApp')
-.controller('CrucesCtrl',function ($scope, $uibModal, crucesService) {
+.controller('CrucesCtrl',function ($scope, $uibModal,$window, crucesService) {
 
     $scope.search = {};
     $scope.search.estado_id = '1';
@@ -88,27 +88,58 @@ angular.module('rstinvFrontendApp')
                     return cruce.id;
                 } 
             }
+        });        
+            
+
+    /*$scope.removeRow = function (indexcruce) { 
+    if(confirm('Esta seguro')){
+        $scope.cruces.splice(indexcruce, 1); 
+        crucesService.delete(indexcruce, function(data) {
+        $scope.message = data;
+        $scope.getCruces();
+    },function(error) {
+                
         });
+    }
+}; */
 
         modalInstanceEdit.result.then(function (data) {
             $scope.message = data;
             $scope.init();
         });
     };
+    
+            $scope.showDetalle = function(cruce) {
+       var modalInstanceDetalle = $uibModal.open({
+        templateUrl: 'views/crucesdetalle.html',
+        controller: 'CrucesdetalleCtrl',
+        backdrop: true,
+        resolve: {
+                cruce_id: function() {
+                    return cruce.id;
+                } 
+            }
+        }); 
+        modalInstanceDetalle.result.then(function (data) {
+            $scope.message = data;
+            $scope.init();
+        });
+    };
+    
        
     $scope.showCrucesDelete = function(cruce) {
         if (confirm('¿Está seguro de eliminar este cruce?')) {
             cruce.estado_id = 2;
             crucesService.save(cruce, function(data) {
-                $scope.message = data;
+            $scope.message = data;
                 $scope.getCruces();
             }, function(error) {
                 cruce.estado_id = 1;
-            });
+        });
         }
     };
-    
-    $scope.showCucesActivate = function(cruce) {
+
+    $scope.showCrucesActivate = function(cruce) {
         if (confirm('¿Está seguro de activar el servicio?')) {
             cruce.estado_id = 1;
             crucesService.save(cruce, function(data) {

@@ -1,6 +1,8 @@
 {
     "elements": {
+        "uib-tab": {},
         "ui-view": {},
+        "uib-tabset": {},
         "hbody": {},
         "scrollable-table": {}
     },

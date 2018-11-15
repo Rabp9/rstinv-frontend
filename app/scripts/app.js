@@ -1,3 +1,4 @@
+
 'use strict';
 
 /**
@@ -54,11 +55,21 @@ angular
         controller: 'CrucesEditCtrl',
         controllerAs: 'crucesEdit',
         title: 'Editar Cruce'
-    };  
+    };
+    
+        var crucesDetalleState = {
+        name: 'crucesDetalle',
+        url: '/cruces/detalle',
+        templateUrl: 'views/crucesdetalle.html',
+        controller: 'CrucesdetalleCtrl',
+        controllerAs: 'crucesDetalle',
+        title: 'Detalle Cruce'
+    }; 
     
     $stateProvider.state(mainState);
     $stateProvider.state(crucesState);
     $stateProvider.state(crucesAddState);
     $stateProvider.state(crucesEditState);
+    $stateProvider.state(crucesDetalleState);
     $urlRouterProvider.when('', '/');
 });
